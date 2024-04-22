@@ -1,16 +1,17 @@
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Navigation = () => {
+  const handleMenu = ({ isActive }) => isActive ? 'nav-link active' : 'nav-link'
   return (
     <Navbar bg='dark' data-bs-theme='dark'>
       <Container>
-        <Navbar.Brand href='#home'>icono</Navbar.Brand>
+        <NavLink to='/'>Icono</NavLink>
         <Nav className='ms-auto'>
-          <Link to='/'>Home</Link>
-          <Link to='/pokemones'>Pokemones</Link>
+          <NavLink className={handleMenu} to='/'>Home</NavLink>
+          <NavLink className={handleMenu} to='/pokemones'>Pokemones</NavLink>
         </Nav>
       </Container>
     </Navbar>
