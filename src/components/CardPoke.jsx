@@ -3,8 +3,12 @@ import translation from '../functions/translation'
 import { useNavigate } from 'react-router-dom'
 
 const CardPoke = ({ personaje, image }) => {
+  // redireccionar
+  const navigate = useNavigate()
+  const getDetails = () => {
+    navigate('/pokemones/')
+  }
   const propertys = Object.entries(personaje)
-
   return (
     <Card
       className='container mt-5 p-2'
@@ -28,6 +32,9 @@ const CardPoke = ({ personaje, image }) => {
           </ul>
         ))}
       </Card.Body>
+      <button className='btn btn-warning' onClick={getDetails}>
+        Regresar
+      </button>
     </Card>
   )
 }

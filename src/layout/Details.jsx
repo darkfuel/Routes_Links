@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import CardPoke from '../components/CardPoke'
 import { useParams } from 'react-router-dom'
+
 const Details = () => {
   const { name } = useParams()
   const [personaje, setPersonaje] = useState([])
   const [image, setImage] = useState({})
   const getSelect = async () => {
     try {
+      // No me funcionó la variable de entorno
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
       const data = await res.json()
       const { id, weight, height, base_experience, sprites } = data
