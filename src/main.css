@@ -7,3 +7,11 @@
  justify-content: center;
  min-height: 100vh;
 }
+
+.abs-center-card {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ min-height: 100vh;
+}

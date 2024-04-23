@@ -1,21 +1,32 @@
-import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-import { useContext } from 'react'
-import { Mycontext } from '../context/my_context'
+import translation from '../functions/translation'
+import { useNavigate } from 'react-router-dom'
 
-const CardPoke = ({ item }) => {
-  const { poke } = useContext(Mycontext)
-  console.log(poke)
+const CardPoke = ({ personaje, image }) => {
+  const propertys = Object.entries(personaje)
+
   return (
-    <Card className='text-center' style={{ width: '18rem' }}>
-      <Card.Img variant='top' src={item.sprites.back_default} />
+    <Card
+      className='container mt-5 p-2'
+      border='warning'
+      style={{ width: '30rem' }}
+    >
+      <Card.Title className='text-center text-uppercase'>
+        {personaje.name}
+      </Card.Title>
+      <Card.Img
+        className='img-respondive'
+        variant='top'
+        src={image.front_default}
+      />
       <Card.Body>
-        <Card.Title>{item.name}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant='primary'>Go somewhere</Button>
+        {propertys.map((item) => (
+          <ul className='bg-warning'>
+            <li className='text-capitalize'>
+              <strong>{translation[item[0]]}</strong>: {item[1]}
+            </li>
+          </ul>
+        ))}
       </Card.Body>
     </Card>
   )

@@ -1,13 +1,28 @@
-import { useContext } from 'react'
-import { Mycontext } from '../context/my_context'
+import { useEffect, useState } from 'react'
 import CardPoke from '../components/CardPoke'
-
+import { useParams } from 'react-router-dom'
 const Details = () => {
-  const { poke } = useContext(Mycontext)
-  console.log(poke)
+  const { name } = useParams()
+  const [personaje, setPersonaje] = useState([])
+  const [image, setImage] = useState({})
+  const getSelect = async () => {
+    try {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      const data = await res.json()
+      const { id, weight, height, base_experience, sprites } = data
+      setPersonaje({ name, id, weight, height, base_experience })
+      setImage(sprites)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getSelect()
+  }, [])
   return (
-    <div className='container'>
-      {poke && poke.map((item) => <CardPoke item={item} key={item.id} />)}
+    <div className='center-block'>
+      <CardPoke personaje={personaje} image={image} />
     </div>
   )
 }

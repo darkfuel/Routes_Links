@@ -26,11 +26,6 @@ const DataProvider = ({ children }) => {
     getPerso()
   }, [])
 
-  const globalData = {
-    poke,
-    setPoke
-  }
-
   return (
     <Mycontext.Provider value={{ poke, setPoke }}>{children}</Mycontext.Provider>
   )
