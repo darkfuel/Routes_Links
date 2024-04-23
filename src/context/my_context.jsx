@@ -6,7 +6,7 @@ const DataProvider = ({ children }) => {
   const getPerso = async () => {
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_URL}?limit=10&offset=0'`
+        'https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0'
       )
       const data = await res.json()
       // get details
